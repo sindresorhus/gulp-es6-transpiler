@@ -1,6 +1,6 @@
 'use strict';
 var gutil = require('gulp-util');
-var es = require('event-stream');
+var map = require('map-stream');
 var es6transpiler = require('es6-transpiler');
 
 module.exports = function (options) {
@@ -10,7 +10,7 @@ module.exports = function (options) {
 	delete options.outputToConsole;
 	delete options.outputFilename;
 
-	return es.map(function (file, cb) {
+	return map(function (file, cb) {
 		if (file.isNull()) {
 			return cb(null, file);
 		}
