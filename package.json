@@ -1,0 +1,49 @@
+{
+  "name": "gulp-es6-transpiler",
+  "version": "0.0.0",
+  "description": "Transpile ES6 to ES5",
+  "license": "MIT",
+  "repository": "sindresorhus/es6-transpiler",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "es5",
+    "es6",
+    "ecmascript",
+    "ecmascript6",
+    "harmony",
+    "javascript",
+    "js",
+    "transform",
+    "transformation",
+    "transpile",
+    "transpiler",
+    "convert",
+    "rewrite",
+    "syntax",
+    "codegen",
+    "desugaring",
+    "compiler"
+  ],
+  "dependencies": {
+    "gulp-util": "~2.2.0",
+    "event-stream": "~3.0.20",
+    "es6-transpiler": "~0.7.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
