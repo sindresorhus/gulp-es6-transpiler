@@ -15,3 +15,15 @@ it('should transpile ES6 to ES5', function (cb) {
 		contents: new Buffer('const x = 3;')
 	}));
 });
+
+it('should handle errors on an exception from the transpiler', function (cb) {
+	var stream = es6transpiler();
+
+	stream.on('error', function () {
+		cb();
+	});
+
+	stream.write(new gutil.File({
+		contents: new Buffer('let a()a')
+	}));
+});
