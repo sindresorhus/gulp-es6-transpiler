@@ -20,19 +20,17 @@ module.exports = function (options) {
 			return cb();
 		}
 
-		var result;
 		options.src = file.contents.toString();
 
 		try {
-			result = es6transpiler.run(options);
+			var result = es6transpiler.run(options);
+			if (result.errors.length > 0) {
+				this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n')));
+			} else {
+				file.contents = new Buffer(result.src);
+			}
 		} catch (err) {
 			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err));
-		}
-
-		if (result.errors.length > 0) {
-			this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n')));
-		} else {
-			file.contents = new Buffer(result.src);
 		}
 
 		this.push(file);
