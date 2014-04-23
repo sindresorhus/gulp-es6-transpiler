@@ -30,6 +30,7 @@ module.exports = function (options) {
 				file.contents = new Buffer(result.src);
 			}
 		} catch (err) {
+			err.fileName = file.path
 			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err));
 		}
 
