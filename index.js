@@ -25,13 +25,17 @@ module.exports = function (options) {
 		try {
 			var result = es6transpiler.run(options);
 			if (result.errors.length > 0) {
-				this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n')));
+				this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n'), {
+					showStack: false,
+					fileName: file.path
+				}));
 			} else {
 				file.contents = new Buffer(result.src);
 			}
 		} catch (err) {
-			err.fileName = file.path;
-			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err));
+			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err, {
+				fileName: file.path
+			}));
 		}
 
 		this.push(file);
