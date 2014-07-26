@@ -26,8 +26,8 @@ module.exports = function (options) {
 			var result = es6transpiler.run(options);
 			if (result.errors.length > 0) {
 				this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n'), {
-					showStack: false,
-					fileName: file.path
+					fileName: file.path,
+					showStack: false
 				}));
 			} else {
 				file.contents = new Buffer(result.src);

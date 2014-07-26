@@ -1,7 +1,7 @@
 'use strict';
 var assert = require('assert');
 var gutil = require('gulp-util');
-var es6transpiler = require('./index');
+var es6transpiler = require('./');
 
 it('should transpile ES6 to ES5', function (cb) {
 	var stream = es6transpiler();
