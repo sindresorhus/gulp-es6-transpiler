@@ -11,34 +11,33 @@ module.exports = function (options) {
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
-			this.push(file);
-			return cb();
+			cb(null, file);
+			return;
 		}
 
 		if (file.isStream()) {
-			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', 'Streaming not supported'));
-			return cb();
+			cb(new gutil.PluginError('gulp-es6-transpiler', 'Streaming not supported'));
+			return;
 		}
 
 		options.src = file.contents.toString();
 
 		try {
 			var result = es6transpiler.run(options);
+
 			if (result.errors.length > 0) {
-				this.emit('error', new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n'), {
+				cb(new gutil.PluginError('gulp-es6-transpiler\n', result.errors.join('\n'), {
 					fileName: file.path,
 					showStack: false
 				}));
-			} else {
-				file.contents = new Buffer(result.src);
-			}
-		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err, {
-				fileName: file.path
-			}));
-		}
+				return;
 
-		this.push(file);
-		cb();
+			}
+
+			file.contents = new Buffer(result.src);
+			cb(null, file);
+		} catch (err) {
+			cb(new gutil.PluginError('gulp-es6-transpiler', err, {fileName: file.path}));
+		}
 	});
 };

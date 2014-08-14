@@ -39,9 +39,9 @@
     "compiler"
   ],
   "dependencies": {
-    "es6-transpiler": "^0.7.0",
+    "es6-transpiler": "^0.7.14",
     "gulp-util": "^3.0.0",
-    "through2": "^0.5.1"
+    "through2": "^0.6.1"
   },
   "devDependencies": {
     "mocha": "*"

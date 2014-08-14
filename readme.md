@@ -7,7 +7,7 @@
 
 ## Install
 
-```bash
+```sh
 $ npm install --save-dev gulp-es6-transpiler
 ```
 
@@ -35,4 +35,4 @@ Use the es6-transpiler [options](https://github.com/termi/es6-transpiler#options
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)

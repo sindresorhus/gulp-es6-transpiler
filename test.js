@@ -6,14 +6,17 @@ var es6transpiler = require('./');
 it('should transpile ES6 to ES5', function (cb) {
 	var stream = es6transpiler();
 
-	stream.on('data', function (file) {
+	stream.once('data', function (file) {
 		assert.equal(file.contents.toString(), 'var x = 3;');
-		cb();
 	});
+
+	stream.on('end', cb);
 
 	stream.write(new gutil.File({
 		contents: new Buffer('const x = 3;')
 	}));
+
+	stream.end();
 });
 
 it('should handle errors on an exception from the transpiler', function (cb) {
@@ -26,4 +29,6 @@ it('should handle errors on an exception from the transpiler', function (cb) {
 	stream.write(new gutil.File({
 		contents: new Buffer('let a()a')
 	}));
+
+	stream.end();
 });
