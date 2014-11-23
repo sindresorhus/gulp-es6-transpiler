@@ -35,9 +35,11 @@ module.exports = function (options) {
 			}
 
 			file.contents = new Buffer(result.src);
-			cb(null, file);
+			this.push(file);
 		} catch (err) {
-			cb(new gutil.PluginError('gulp-es6-transpiler', err, {fileName: file.path}));
+			this.emit('error', new gutil.PluginError('gulp-es6-transpiler', err, {fileName: file.path}));
 		}
+
+		cb();
 	});
 };
