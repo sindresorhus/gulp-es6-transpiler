@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-es6-transpiler [![Build Status](https://travis-ci.org/sindresorhus/gulp-es6-transpiler.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-es6-transpiler)
+# gulp-es6-transpiler [![Build Status](https://travis-ci.org/sindresorhus/gulp-es6-transpiler.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-es6-transpiler)
 
 > Transpile ES6 to ES5 with [es6-transpiler](https://github.com/termi/es6-transpiler)
 
@@ -7,7 +7,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save-dev gulp-es6-transpiler
 ```
 
